@@ -14,5 +14,4 @@ A basic header file, an empty source file, and a test file have been provided fo
 
 You will need to edit all of these files to complete the exercise.  To make it easier to get started there are some tests provided that are commented out.  You should un-comment (and complete) these tests one-by-one to finish most of the exercise, but these tests are not sufficient and you should write more if you have time.
 
-## Building
-Once you've cloned the repository, you can either execute _make_ from a terminal or press ctrl+B in Eclipse to build and run the tests.
+In order to build and run your tests, you can either execute _make_ from a terminal or press ctrl+B in Eclipse to build and run the tests.
