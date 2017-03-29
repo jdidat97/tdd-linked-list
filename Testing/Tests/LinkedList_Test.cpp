@@ -1,8 +1,6 @@
 /*!
  * @file
  * @brief Tests for Linked List module.
- *
- * Copyright (c) 2014 - General Electric - All rights reserved.
  */
 
 extern "C"
