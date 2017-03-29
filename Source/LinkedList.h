@@ -1,8 +1,6 @@
 /*!
  * @file
  * @brief Singly-linked list data structure.
- *
- * Copyright (c) 2014 - General Electric - All rights reserved.
  */
 
 #ifndef LINKEDLIST_H
