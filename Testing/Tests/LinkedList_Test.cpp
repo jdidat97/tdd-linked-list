@@ -55,7 +55,7 @@ TEST(LinkedList, CountIncreasesAfterPushFrontOneNode)
    CHECK(1 == LinkedList_Count(&instance));
 }
 
-TEST(LinkedList, CountIncreasesAfterPushFrontFiveNodes)
+TEST(LinkedList, CountIncreasesAfterPushFrontMultipleNodes)
 {
    LinkedListNode_t node;
 
@@ -79,7 +79,7 @@ TEST(LinkedList, CountIncreasesAfterPushBackOneNode)
    CHECK(1 == LinkedList_Count(&instance));
 }
 
-TEST(LinkedList, CountIncreasesAfterPushBackSixNodes)
+TEST(LinkedList, CountIncreasesAfterPushBackMultipleNodes)
 {
    LinkedListNode_t node;
    LinkedList_Init(&instance);
