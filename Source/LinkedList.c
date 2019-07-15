@@ -4,8 +4,8 @@
  */
 
 #include "LinkedList.h"
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 void LinkedList_Init(LinkedList_t *instance)
 {
