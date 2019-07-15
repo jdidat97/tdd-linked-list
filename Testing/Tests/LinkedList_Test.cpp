@@ -22,15 +22,14 @@ TEST_GROUP(LinkedList)
 
    void teardown()
    {
-      LinkedListNode_t * temp = (LinkedListNode_t *)malloc(sizeof(LinkedListNode_t));
-      LinkedListNode_t * head = (LinkedListNode_t *)malloc(sizeof(LinkedListNode_t));
-      while (temp != NULL) {
-         temp = instance.head;
+      LinkedListNode_t *temp;
+      LinkedListNode_t *head = instance.head;
+      while(head != NULL)
+      {
+         temp = head;
          head = head->next;
          free(temp);
       }
-      free(head);
-      free(&instance);
    }
 };
 
@@ -39,7 +38,6 @@ TEST(LinkedList, MyFirstTest)
    FAIL("My first test is running!");
 }
 
-
 TEST(LinkedList, EmptyAfterInit)
 {
    LinkedList_Init(&instance);
@@ -47,50 +45,72 @@ TEST(LinkedList, EmptyAfterInit)
    CHECK(0 == LinkedList_Count(&instance));
 }
 
-TEST(LinkedList, CountIncreasesAfterPushFront)
+TEST(LinkedList, CountIncreasesAfterPushFrontOneNode)
 {
    LinkedListNode_t node;
 
    LinkedList_Init(&instance);
    LinkedList_PushFront(&instance, &node);
 
-   CHECK(2 == LinkedList_Count(&instance));
+   CHECK(1 == LinkedList_Count(&instance));
 }
 
-// TEST(LinkedList, CountIncreasesAfterPushBack)
-// { 
+TEST(LinkedList, CountIncreasesAfterPushFrontFiveNodes)
+{
+   LinkedListNode_t node;
 
-//    LinkedList_Init(&instance);
-//    LinkedList_PushBack(&instance, &node);
+   LinkedList_Init(&instance);
+   LinkedList_PushFront(&instance, &node);
+   LinkedList_PushFront(&instance, &node);
+   LinkedList_PushFront(&instance, &node);
+   LinkedList_PushFront(&instance, &node);
+   LinkedList_PushFront(&instance, &node);
 
+   CHECK(5 == LinkedList_Count(&instance));
+}
 
-//    CHECK(2 == LinkedList_Count(&instance));
-// }
+TEST(LinkedList, CountIncreasesAfterPushBackOneNode)
+{
+   LinkedListNode_t node;
+
+   LinkedList_Init(&instance);
+   LinkedList_PushBack(&instance, &node);
+
+   CHECK(1 == LinkedList_Count(&instance));
+}
+
+TEST(LinkedList, CountIncreasesAfterPushBackSixNodes)
+{
+   LinkedListNode_t node;
+   LinkedList_Init(&instance);
+   LinkedList_PushBack(&instance, &node);
+   LinkedList_PushBack(&instance, &node);
+   LinkedList_PushBack(&instance, &node);
+   LinkedList_PushBack(&instance, &node);
+   LinkedList_PushBack(&instance, &node);
+
+   CHECK(5 == LinkedList_Count(&instance));
+}
 
 #if(0)
 TEST(LinkedList, PopBackRemovesAndReturnsTheLastElementInTheList)
 {
-
 }
 
 TEST(LinkedList, PopFrontRemovesAndReturnsTheFirstElementInTheList)
 {
-
 }
 
 TEST(LinkedList, CountDecreasesWhenAnElementIsPoppedFromTheFrontOfAList)
 {
-
 }
 
 TEST(LinkedList, CountDecreasesWhenAnElementIsPoppedFromTheBackOfAList)
 {
-
 }
 
 TEST(LinkedList, CountDecreasesWhenANodeIsRemoved)
 {
-
 }
 
 TEST(LinkedList, CanRemoveNodeThatIsntInList)
@@ -113,11 +133,9 @@ IGNORE_TEST(LinkedList, CannotAddNodeThatIsAlreadyInTheList)
 
 TEST(LinkedList, CountIsUpdatedCorrectlyAfterAddingMultipleNodes)
 {
-
 }
 
 TEST(LinkedList, CanGetTheNodeAtAnIndex)
 {
-
 }
 #endif

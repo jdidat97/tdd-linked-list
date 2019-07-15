@@ -7,47 +7,43 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-void LinkedList_Init(LinkedList_t *instance) {
-   instance->head = (LinkedListNode_t *)malloc(sizeof(LinkedListNode_t));
-   instance->head->next = NULL;
+void LinkedList_Init(LinkedList_t *instance)
+{
+   instance->head = NULL;
 }
 
-int LinkedList_Count(LinkedList_t *instance) {
-   LinkedListNode_t *node = instance->head;
+int LinkedList_Count(LinkedList_t *instance)
+{
+   LinkedListNode_t *current = instance->head;
    int count = 0;
-   while(node->next != NULL) {
+   while(current != NULL)
+   {
       count++;
-      node = node->next;
+      current = current->next;
    }
    return count;
 }
 
-void LinkedList_PushFront(LinkedList_t *instance, LinkedListNode_t *node) {
+void LinkedList_PushFront(LinkedList_t *instance, LinkedListNode_t *node)
+{
    node = (LinkedListNode_t *)malloc(sizeof(LinkedListNode_t));
-   LinkedListNode_t *temp_node = instance->head;
+   LinkedListNode_t *tempNode = instance->head;
    instance->head = node;
-   node->next = temp_node;
+   node->next = tempNode;
 }
 
-void LinkedList_PushBack(LinkedList_t *instance, LinkedListNode_t *node) {
+void LinkedList_PushBack(LinkedList_t *instance, LinkedListNode_t *node)
+{
    node = (LinkedListNode_t *)malloc(sizeof(LinkedListNode_t));
-   LinkedListNode_t *temp_node = instance->head;
-   
-   printf("first print\n");
-
-   if(instance->head == NULL) {
+   node->next = NULL;
+   if(instance->head == NULL)
+   {
       instance->head = node;
       return;
    }
+   LinkedListNode_t *current = instance->head;
+   while(current->next != NULL)
+      current = current->next;
 
-   printf("second print\n");
-   
-   while(temp_node->next != NULL) {
-      temp_node = temp_node->next;
-   }
-   temp_node->next = node;
-
-   printf("third print\n");
-
-   return;
+   current->next = node;
 }
