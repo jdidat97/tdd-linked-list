@@ -41,7 +41,6 @@ void LinkedList_PushBack(LinkedList_t *instance, LinkedListNode_t *node)
    if(instance->head == NULL)
    {
       instance->head = node;
-      return;
    }
    else
    {
