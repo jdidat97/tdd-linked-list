@@ -4,8 +4,8 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include "LinkedList.h"
 
+#include "LinkedList.h"
 
 void LinkedList_Init(LinkedList_t *instance)
 {
@@ -42,7 +42,8 @@ void LinkedList_PushBack(LinkedList_t *instance, LinkedListNode_t *node)
       return;
    }
    LinkedListNode_t *current = instance->head;
-   while(current->next != NULL) {
+   while(current->next != NULL)
+   {
       current = current->next;
    }
    current->next = node;
