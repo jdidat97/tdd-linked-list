@@ -27,7 +27,7 @@ int LinkedList_Count(LinkedList_t *instance)
 
 void LinkedList_PushFront(LinkedList_t *instance, LinkedListNode_t *node)
 {
-   node = (LinkedListNode_t *)malloc(sizeof(LinkedListNode_t));
+   node = malloc(sizeof(LinkedListNode_t));
    LinkedListNode_t *tempNode = instance->head;
    instance->head = node;
    node->next = tempNode;
@@ -35,7 +35,7 @@ void LinkedList_PushFront(LinkedList_t *instance, LinkedListNode_t *node)
 
 void LinkedList_PushBack(LinkedList_t *instance, LinkedListNode_t *node)
 {
-   node = (LinkedListNode_t *)malloc(sizeof(LinkedListNode_t));
+   node = malloc(sizeof(LinkedListNode_t));
    node->next = NULL;
 
    if(instance->head == NULL)
