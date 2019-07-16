@@ -15,9 +15,11 @@ extern "C"
 TEST_GROUP(LinkedList)
 {
    LinkedList_t instance;
+   LinkedListNode_t node1, node2, node3;
 
    void setup()
    {
+      LinkedList_Init(&instance);
    }
 
    void teardown()
@@ -30,52 +32,63 @@ TEST(LinkedList, MyFirstTest)
    FAIL("My first test is running!");
 }
 
-#if(0)
 TEST(LinkedList, EmptyAfterInit)
 {
-   LinkedList_Init(&instance);
-
    CHECK(0 == LinkedList_Count(&instance));
 }
 
-TEST(LinkedList, CountIncreasesAfterPushFront)
+TEST(LinkedList, CountIncreasesAfterPushFrontOneNode)
 {
-   LinkedListNode_t node;
 
-   LinkedList_Init(&instance);
-   LinkedList_PushFront(&instance, &node);
+   LinkedList_PushFront(&instance, &node1);
 
    CHECK(1 == LinkedList_Count(&instance));
 }
 
-TEST(LinkedList, CountIncreasesAfterPushBack)
+TEST(LinkedList, CountIncreasesAfterPushFrontMultipleNodes)
 {
+   LinkedList_PushFront(&instance, &node1);
+   LinkedList_PushFront(&instance, &node2);
+   LinkedList_PushFront(&instance, &node3);
 
+   CHECK(3 == LinkedList_Count(&instance));
 }
 
+TEST(LinkedList, CountIncreasesAfterPushBackOneNode)
+{
+   LinkedList_PushBack(&instance, &node1);
+
+   CHECK(1 == LinkedList_Count(&instance));
+}
+
+TEST(LinkedList, CountIncreasesAfterPushBackMultipleNodes)
+{
+   LinkedList_PushBack(&instance, &node1);
+   LinkedList_PushBack(&instance, &node2);
+   LinkedList_PushBack(&instance, &node3);
+
+   CHECK(3 == LinkedList_Count(&instance));
+}
+
+#if(0)
 TEST(LinkedList, PopBackRemovesAndReturnsTheLastElementInTheList)
 {
-
 }
 
 TEST(LinkedList, PopFrontRemovesAndReturnsTheFirstElementInTheList)
 {
-
 }
 
 TEST(LinkedList, CountDecreasesWhenAnElementIsPoppedFromTheFrontOfAList)
 {
-
 }
 
 TEST(LinkedList, CountDecreasesWhenAnElementIsPoppedFromTheBackOfAList)
 {
-
 }
 
 TEST(LinkedList, CountDecreasesWhenANodeIsRemoved)
 {
-
 }
 
 TEST(LinkedList, CanRemoveNodeThatIsntInList)
@@ -98,11 +111,9 @@ IGNORE_TEST(LinkedList, CannotAddNodeThatIsAlreadyInTheList)
 
 TEST(LinkedList, CountIsUpdatedCorrectlyAfterAddingMultipleNodes)
 {
-
 }
 
 TEST(LinkedList, CanGetTheNodeAtAnIndex)
 {
-
 }
 #endif
