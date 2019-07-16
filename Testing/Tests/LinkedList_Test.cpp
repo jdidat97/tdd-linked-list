@@ -15,21 +15,15 @@ extern "C"
 TEST_GROUP(LinkedList)
 {
    LinkedList_t instance;
+   LinkedListNode_t node1, node2, node3;
 
    void setup()
    {
+      LinkedList_Init(&instance);
    }
 
    void teardown()
    {
-      LinkedListNode_t *temp;
-      LinkedListNode_t *head = instance.head;
-      while(head != NULL)
-      {
-         temp = head;
-         head = head->next;
-         free(temp);
-      }
    }
 };
 
@@ -40,56 +34,40 @@ TEST(LinkedList, MyFirstTest)
 
 TEST(LinkedList, EmptyAfterInit)
 {
-   LinkedList_Init(&instance);
-
    CHECK(0 == LinkedList_Count(&instance));
 }
 
 TEST(LinkedList, CountIncreasesAfterPushFrontOneNode)
 {
-   LinkedListNode_t node;
 
-   LinkedList_Init(&instance);
-   LinkedList_PushFront(&instance, &node);
+   LinkedList_PushFront(&instance, &node1);
 
    CHECK(1 == LinkedList_Count(&instance));
 }
 
 TEST(LinkedList, CountIncreasesAfterPushFrontMultipleNodes)
 {
-   LinkedListNode_t node;
+   LinkedList_PushFront(&instance, &node1);
+   LinkedList_PushFront(&instance, &node2);
+   LinkedList_PushFront(&instance, &node3);
 
-   LinkedList_Init(&instance);
-   LinkedList_PushFront(&instance, &node);
-   LinkedList_PushFront(&instance, &node);
-   LinkedList_PushFront(&instance, &node);
-   LinkedList_PushFront(&instance, &node);
-   LinkedList_PushFront(&instance, &node);
-
-   CHECK(5 == LinkedList_Count(&instance));
+   CHECK(3 == LinkedList_Count(&instance));
 }
 
 TEST(LinkedList, CountIncreasesAfterPushBackOneNode)
 {
-   LinkedListNode_t node;
-
-   LinkedList_Init(&instance);
-   LinkedList_PushBack(&instance, &node);
+   LinkedList_PushBack(&instance, &node1);
 
    CHECK(1 == LinkedList_Count(&instance));
 }
 
 TEST(LinkedList, CountIncreasesAfterPushBackMultipleNodes)
 {
-   LinkedListNode_t node;
-   LinkedList_Init(&instance);
-   LinkedList_PushBack(&instance, &node);
-   LinkedList_PushBack(&instance, &node);
-   LinkedList_PushBack(&instance, &node);
-   LinkedList_PushBack(&instance, &node);
-   LinkedList_PushBack(&instance, &node);
+   LinkedList_PushBack(&instance, &node1);
+   LinkedList_PushBack(&instance, &node2);
+   LinkedList_PushBack(&instance, &node3);
 
-   CHECK(5 == LinkedList_Count(&instance));
+   CHECK(3 == LinkedList_Count(&instance));
 }
 
 #if(0)

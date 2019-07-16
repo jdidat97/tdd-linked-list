@@ -17,7 +17,7 @@ typedef struct
 } LinkedList_t;
 
 void LinkedList_Init(LinkedList_t *instance);
-int LinkedList_Count(LinkedList_t *instance);
+size_t LinkedList_Count(LinkedList_t *instance);
 void LinkedList_PushFront(LinkedList_t *instance, LinkedListNode_t *node);
 void LinkedList_PushBack(LinkedList_t *instance, LinkedListNode_t *node);
 

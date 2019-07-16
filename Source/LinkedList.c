@@ -13,10 +13,10 @@ void LinkedList_Init(LinkedList_t *instance)
    instance->head = NULL;
 }
 
-int LinkedList_Count(LinkedList_t *instance)
+size_t LinkedList_Count(LinkedList_t *instance)
 {
    LinkedListNode_t *current = instance->head;
-   int count = 0;
+   size_t count = 0;
    while(current != NULL)
    {
       count++;
@@ -27,15 +27,12 @@ int LinkedList_Count(LinkedList_t *instance)
 
 void LinkedList_PushFront(LinkedList_t *instance, LinkedListNode_t *node)
 {
-   node = malloc(sizeof(LinkedListNode_t));
-   LinkedListNode_t *tempNode = instance->head;
+   node->next = instance->head;
    instance->head = node;
-   node->next = tempNode;
 }
 
 void LinkedList_PushBack(LinkedList_t *instance, LinkedListNode_t *node)
 {
-   node = malloc(sizeof(LinkedListNode_t));
    node->next = NULL;
 
    if(instance->head == NULL)
