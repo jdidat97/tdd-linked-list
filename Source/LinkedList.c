@@ -37,15 +37,19 @@ void LinkedList_PushBack(LinkedList_t *instance, LinkedListNode_t *node)
 {
    node = (LinkedListNode_t *)malloc(sizeof(LinkedListNode_t));
    node->next = NULL;
+
    if(instance->head == NULL)
    {
       instance->head = node;
       return;
    }
-   LinkedListNode_t *current = instance->head;
-   while(current->next != NULL)
+   else
    {
-      current = current->next;
+      LinkedListNode_t *current = instance->head;
+      while(current->next != NULL)
+      {
+         current = current->next;
+      }
+      current->next = node;
    }
-   current->next = node;
 }
